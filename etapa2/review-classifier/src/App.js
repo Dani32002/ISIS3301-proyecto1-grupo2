@@ -5,6 +5,7 @@ import Predict from './components/Predict';
 import Stats from './components/Stats';
 import Landing from './components/Landing';
 import Retrain from './components/Retrain';
+import Upload from './components/upload';
 
 function App() {
   return (
@@ -12,10 +13,11 @@ function App() {
       <Header />
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={ <Landing /> }/>
-          <Route path='/predict' element={ <Predict /> }/>
-          <Route path='/stats' element={ <Stats /> }/>
-          <Route path='/retrain' element={ <Retrain /> }/>
+          <Route path='/' element={<Landing />} />
+          <Route path='/predict' element={<Predict />} />
+          <Route path='/stats' element={<Stats />} />
+          <Route path='/retrain' element={<Retrain />} />
+          <Route path='/upload' element={<Upload />} />
         </Routes>
       </BrowserRouter>
     </>
