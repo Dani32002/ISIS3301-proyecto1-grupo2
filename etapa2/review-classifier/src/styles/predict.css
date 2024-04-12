@@ -1,0 +1,53 @@
+
+.predictFormContainer {
+    width: 900px;
+    margin:auto;
+}
+
+.predictButtonSpace {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submitPredictionButton {
+    height: 50px;
+}
+
+.scoreLabel {
+    width: 100%;
+    text-align: center;
+}
+
+.scoreSelectionSpace {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vsTable {
+    height: 100px;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 4%;
+}
+
+.metricsRow {
+    margin-top: 4%;
+}
+
+.differenceValue {
+    font-weight: bold;
+    font-size: 25px;
+    width: 100%;
+    padding: 3%;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.cleanPredictButton {
+    width: 100px;
+    margin: auto;
+    margin-top: 2%;
+}
