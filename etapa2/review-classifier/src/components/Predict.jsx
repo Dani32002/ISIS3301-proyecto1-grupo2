@@ -113,9 +113,20 @@ const Predict = () => {
     }
 
     return (
+
+
         <PredictContainer>
 
             <div className='predictFormContainer'>
+
+                <Row className="mb-4">
+                    <Col xs={12} className="text-center">
+                        <h1 className="font-weight-bold">Predict the Score of a Review</h1>
+
+                        <p className="text-muted">Write a review and predict the score that it will receive. <br></br>This is useful to check the accuracy of the model</p>
+                    </Col>
+                </Row>
+
                 <Row>
                     <Form>
                         <Row>

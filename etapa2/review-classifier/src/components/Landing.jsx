@@ -24,18 +24,23 @@ const Title = styled.h1`
 `;
 
 const Subtitle = styled.h2`
-  font-size: 1.5em;
-  color: #666;
+  font-size: 1.1em; // Reduce this value to make the font smaller
+  color: #777;
+  margin-top: 20px;
 `;
-
 const Landing = () => {
   return (
     <LandingContainer>
       <Content>
-        <Title>Welcome to our Hotel Management App</Title>
+        <Title style={{ paddingBottom: "30px" }}>Welcome to our Hotel Management App</Title>
         <Subtitle>
           This application will help you improve your management and decision-making by identifying the most important complaints in reviews and points of improvement in your hotel.
         </Subtitle>
+
+        <Subtitle>
+          Our machine learning model will analyze your reviews and provide you with valuable insights to help you improve your hotel's performance.
+        </Subtitle>
+
       </Content>
     </LandingContainer>
   )
