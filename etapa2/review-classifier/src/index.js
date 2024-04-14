@@ -6,6 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/predict.css';
 import './styles/header.css';
+import './styles/footer.css';
+import './styles/metrics.css';
+import './styles/analytics.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -21,12 +21,10 @@ ChartJS.register(
 )
 
 const PredictContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: calc(100vh - 70px); // assuming the navbar height is 60px
+  height: 475px; // assuming the navbar height is 60px
   background-color: #f4f4f4;
   padding: 20px;
+  padding-top: 50px;
   box-sizing: border-box;
 `;
 const Predict = () => {
@@ -115,7 +113,7 @@ const Predict = () => {
     return (
 
 
-        <PredictContainer>
+        <PredictContainer style={(showAnswer)? {height: "750px"}: {}}>
 
             <div className='predictFormContainer'>
 

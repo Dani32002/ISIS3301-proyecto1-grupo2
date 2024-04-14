@@ -6,6 +6,8 @@ import Stats from './components/Stats';
 import Landing from './components/Landing';
 import Retrain from './components/Retrain';
 import Upload from './components/upload';
+import Footer from './components/Footer';
+import Metrics from './components/Metrics'
 
 function App() {
   return (
@@ -18,8 +20,10 @@ function App() {
           <Route path='/stats' element={<Stats />} />
           <Route path='/retrain' element={<Retrain />} />
           <Route path='/upload' element={<Upload />} />
+          <Route path='/metrics' element={<Metrics />} />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </>
   );
 }

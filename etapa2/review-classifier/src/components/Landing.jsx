@@ -34,7 +34,7 @@ const Landing = () => {
       <Content>
         <Title style={{ paddingBottom: "30px" }}>Welcome to our Hotel Management App</Title>
         <Subtitle>
-          This application will help you improve your management and decision-making by identifying the most important complaints in reviews and points of improvement in your hotel.
+          This application will help you improve your management and decision-making by identifying the most important complaints in reviews and points of improvement based on reviews from multiple hotels.
         </Subtitle>
 
         <Subtitle>

@@ -39,7 +39,7 @@ function Upload() {
                     <Col xs={12} className="text-center">
                         <h1 className="font-weight-bold">Upload your hotel's reviews</h1>
 
-                        <p className="text-muted">Upload a JSON file with your hotel's reviews to <br></br> analyze them and obtain valuable insights</p>
+                        <p className="text-muted">Upload a JSON file with your hotel's reviews to <br></br> analyze them and obtain their predicted score.</p>
                     </Col>
                 </Row>
                 <Row className="mb-2">

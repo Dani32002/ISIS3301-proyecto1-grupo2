@@ -44,6 +44,7 @@ const Header = () => {
           <Nav.Link href="/stats">Stats</Nav.Link>
           <Nav.Link href="/upload">Upload</Nav.Link>
           <Nav.Link href="/retrain">Retrain</Nav.Link>
+          <Nav.Link href="/metrics">Metrics</Nav.Link>
         </StyledNav>
       </Container>
     </StyledNavbar>
