@@ -126,18 +126,18 @@ param_grid = {
     'max_iter': [1000]
 }
 
-data=pd.read_csv('tipo1_entrenamiento_estudiantes.csv', sep=',', encoding = 'utf-8')
+data=pd.read_csv('./assets/tipo1_entrenamiento_estudiantes.csv', sep=',', encoding = 'utf-8')
 label = 'Class'
 features = data.columns.to_list()
 features.remove(label)
 
 x_train, x_test, y_train, y_test = train_test_split(data[features], data[label], test_size=0.2, random_state=1)
 #json_array = data.head(2000).to_json(orient='records')
-#with open("datos.txt", "w") as text_file:
+#with open("./assets/datos.txt", "w") as text_file:
 #    text_file.write(json_array)
 
-"""
-# Define the pipeline with preprocessing and logistic regression model
+
+"""# Define the pipeline with preprocessing and logistic regression model
 pipeline = Pipeline([
     ('preprocessor', TextPreprocessor()),
     ('vectorizer', Vectorizer()),
@@ -148,4 +148,4 @@ pipeline = Pipeline([
 pipa = pipeline.fit(x_train, y_train)
 y_pred = pipa.predict(x_test)
 print(classification_report(y_test, y_pred))
-joblib.dump(pipeline, 'pipelineReviews.joblib')"""
+joblib.dump(pipeline, './assets/pipelineReviews.joblib')"""
