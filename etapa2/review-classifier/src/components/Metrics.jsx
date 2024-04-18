@@ -10,7 +10,71 @@ const StatsContainer = styled.div`
   background-color: #f4f4f4;
   padding: 20px;
   box-sizing: border-box;
+  height:  calc(100vh - 70px);
 `;
+
+// function to correct some words that were lemmatized incorrectly
+// for the better visualization of the metrics
+function correctWords(words) {
+    return words.map(word => {
+        // first word: 'demaciadoma' should be 'demasiado'
+        if (word === 'demaciadoma') {
+            return 'demasiado';
+        }
+        // second word: 'pierd' should be 'pierde'
+        if (word === 'pierd') {
+            return 'pierde';
+        }
+        // third word: 'pesimar' should be 'pesimo'
+        if (word === 'pesimar') {
+            return 'pesima';
+        }
+        // fourth word: 'colos' should be 'colosal'
+        if (word === 'colos') {
+            return 'colosal';
+        }
+        // fifth word: 'epoco' should be 'epoca'
+        if (word === 'epoco') {
+            return 'epoca';
+        }
+        // sixth word: 'esperabar' should be 'esperar'
+        if (word === 'esperabar') {
+            return 'esperar';
+        }
+        // seventh word: 'mantencion' should be 'mantenimiento'
+        if (word === 'mantencion') {
+            return 'mantenimiento';
+        }
+        // eighth word: 'sorprendent' should be 'sorprendente'
+        if (word === 'sorprendent') {
+            return 'sorprendente';
+        }
+        // ninth word: 'person' should be 'persona'
+        if (word === 'person') {
+            return 'persona';
+        }
+        // tenth word: 'envergadurar' should be 'envergadura'
+        if (word === 'envergadurar') {
+            return 'envergadura';
+        }
+        // eleventh word: 'diabet' should be 'diabetico'
+        if (word === 'diabet') {
+            return 'diabetico';
+        }
+        // twelfth word: 'delicios' should be 'delicioso'
+        if (word === 'delicios') {
+            return 'delicioso';
+        }
+
+        else {
+            return word;
+        }
+
+    });
+}
+
+
+
 
 const Stats = () => {
 
@@ -56,9 +120,45 @@ const Stats = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:4000/metrics')
+        fetch('http://localhost:8000/metrics')
             .then(response => response.json())
-            .then(data => setMetrics(data))
+            .then(data => {
+
+                // multiply the metrics by 100 to get a percentage
+                data.general.precision *= 100;
+                data.general.recall *= 100;
+                data.general.f1_score *= 100;
+
+                data.score1.precision *= 100;
+                data.score1.recall *= 100;
+                data.score1.f1_score *= 100;
+
+                data.score2.precision *= 100;
+                data.score2.recall *= 100;
+                data.score2.f1_score *= 100;
+
+                data.score3.precision *= 100;
+                data.score3.recall *= 100;
+                data.score3.f1_score *= 100;
+
+                data.score4.precision *= 100;
+                data.score4.recall *= 100;
+                data.score4.f1_score *= 100;
+
+                data.score5.precision *= 100;
+                data.score5.recall *= 100;
+                data.score5.f1_score *= 100;
+
+                // corrije la lematización de algunas palabras
+                data.score1.top_words = correctWords(data.score1.top_words);
+                data.score2.top_words = correctWords(data.score2.top_words);
+                data.score3.top_words = correctWords(data.score3.top_words);
+                data.score4.top_words = correctWords(data.score4.top_words);
+                data.score5.top_words = correctWords(data.score5.top_words);
+
+                setMetrics(data);
+
+            })
             .catch(error => {
                 console.error('Error:', error);
                 alert('Failed to fetch metrics, showing fallback data.');

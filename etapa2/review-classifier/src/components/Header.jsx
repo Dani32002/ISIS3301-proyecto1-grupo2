@@ -41,10 +41,9 @@ const Header = () => {
         </StyledBrand>
         <StyledNav className="me-auto">
           <Nav.Link href="/predict">Predict</Nav.Link>
-          <Nav.Link href="/stats">Stats</Nav.Link>
-          <Nav.Link href="/upload">Upload</Nav.Link>
-          <Nav.Link href="/retrain">Retrain</Nav.Link>
           <Nav.Link href="/metrics">Metrics</Nav.Link>
+          <Nav.Link href="/retrain">Retrain</Nav.Link>
+          <Nav.Link href="https://www.youtube.com/watch?v=1fUlVKKObCk">About Us</Nav.Link>
         </StyledNav>
       </Container>
     </StyledNavbar>
