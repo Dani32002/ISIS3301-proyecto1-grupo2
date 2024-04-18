@@ -21,7 +21,7 @@ ChartJS.register(
 )
 
 const PredictContainer = styled.div`
-  height: 475px; // assuming the navbar height is 60px
+  height: calc(100vh - 70px);
   background-color: #f4f4f4;
   padding: 20px;
   padding-top: 50px;
@@ -86,26 +86,57 @@ const Predict = () => {
     const predictHandler = () => {
         setDisableCheck(true);
 
-        fetch('http://localhost:4000/predict', {
+        fetch('http://localhost:8000/predict', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ text: review }),
+            body: JSON.stringify([{ "Review": review }])
         })
             .then(response => response.json())
             .then(data => {
-                const respuesta = data.probabilities;
+                console.log('Success:', data);
+
+                // the response is a list with the following structure:
+
+                /*
+                [
+                    {
+                        "prediction": 1,
+                        "probabilities": [
+                            0.6952821541993005,
+                            0.21264938575402295,
+                            0.06423904445386158,
+                            0.022508859770563477,
+                            0.00532055582225158
+                        ]
+                    }
+                ]
+                */
+
+                let respuesta = data[0].probabilities;
+                console.log(respuesta);
+
+                // round the probabilities to 1 decimal
+                respuesta = respuesta.map((value) => {
+                    return Math.round(value * 10) / 10;
+                });
                 const backgroundColorNew = ['aqua', 'aqua', 'aqua', 'aqua', 'aqua'];
                 if (option === "Yes") {
                     backgroundColorNew[value - 1] = 'green';
                 }
-                const predictedValue = respuesta.indexOf(Math.max(...respuesta)) + 1
-                setPrediction(predictedValue);
+                let predictedValue = data[0].prediction;
                 backgroundColorNew[predictedValue - 1] = 'purple';
 
+                if (predictedValue === 0) {
+                    alert('The prediction failed, the model could not predict the score');
+                    predictedValue = "Unknown";
+                }
+                setPrediction(predictedValue);
+
+
                 setData({
-                    ...data,
+                    labels: ['1', '2', '3', '4', '5'],
                     datasets: [
                         {
                             label: 'Probabilities',
@@ -133,7 +164,7 @@ const Predict = () => {
                 backgroundColorNew[predictedValue - 1] = 'purple';
 
                 setData({
-                    ...data,
+                    labels: ['1', '2', '3', '4', '5'],
                     datasets: [
                         {
                             label: 'Probabilities',

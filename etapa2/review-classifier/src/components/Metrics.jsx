@@ -10,6 +10,7 @@ const StatsContainer = styled.div`
   background-color: #f4f4f4;
   padding: 20px;
   box-sizing: border-box;
+  height:  calc(100vh - 70px);
 `;
 
 const Stats = () => {
