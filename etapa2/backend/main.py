@@ -51,9 +51,10 @@ def read_root():
 # Re entrena el modelo con estos datos y recalcula las metricas
 @app.post("/retrain")
 def retrain_pipe(data: List[DataModelLabeled]):
+    print("Retraining model")
     # Creación del dataframe con las columnas correspondientes
     df = pd.DataFrame(columns=["Review", "Class"])
-
+    print("Training with a dataset of size: ", len(data))
     # Agregar cada fila al dataframe
     for element in data:
         entrada = pd.DataFrame({"Review": [element.Review], "Class": [element.Class]})

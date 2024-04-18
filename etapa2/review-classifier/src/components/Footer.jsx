@@ -12,8 +12,8 @@ const Footer = () => {
           <Row>
             <Nav variant='dark' className="navFooter flex-column">
               <Nav.Link href="/predict">Predict</Nav.Link>
-              <Nav.Link href="/stats">Stats</Nav.Link>
-              <Nav.Link href="/upload">Upload</Nav.Link>
+              <Nav.Link href="/metrics">Metrics</Nav.Link>
+              <Nav.Link href="/retrain">Retrain</Nav.Link>
             </Nav>
           </Row>
         </Col>

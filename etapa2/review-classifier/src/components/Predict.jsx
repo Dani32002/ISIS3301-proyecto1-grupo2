@@ -121,12 +121,12 @@ const Predict = () => {
                 respuesta = respuesta.map((value) => {
                     return Math.round(value * 10) / 10;
                 });
-                const backgroundColorNew = ['aqua', 'aqua', 'aqua', 'aqua', 'aqua'];
+                const backgroundColorNew = ['#9BC4D5', '#9BC4D5', '#9BC4D5', '#9BC4D5', '#9BC4D5']; // Cambiado a un azul más suave
                 if (option === "Yes") {
-                    backgroundColorNew[value - 1] = 'green';
+                    backgroundColorNew[value - 1] = '#bce8d8'; // Cambiado a un verde más suave
                 }
                 let predictedValue = data[0].prediction;
-                backgroundColorNew[predictedValue - 1] = 'purple';
+                backgroundColorNew[predictedValue - 1] = '#BCE8D8'; // Cambiado a un púrpura más suave
 
                 if (predictedValue === 0) {
                     alert('The prediction failed, the model could not predict the score');
