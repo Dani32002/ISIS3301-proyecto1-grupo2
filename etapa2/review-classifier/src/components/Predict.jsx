@@ -84,36 +84,74 @@ const Predict = () => {
     }
 
     const predictHandler = () => {
-        //Llamado al back
         setDisableCheck(true);
-        const respuesta = [0, 0.1, 0.3, 0.7, 1];
-        const backgroundColorNew = ['aqua', 'aqua', 'aqua', 'aqua', 'aqua'];
-        if (option === "Yes") {
-            backgroundColorNew[value - 1] = 'green';
-        }
-        const predictedValue = respuesta.indexOf(Math.max(...respuesta)) + 1
-        setPrediction(predictedValue);
-        backgroundColorNew[predictedValue - 1] = 'purple';
 
-        setData({
-            ...data,
-            datasets: [
-                {
-                    label: 'Probabilities',
-                    data: respuesta,
-                    backgroundColor: backgroundColorNew,
-                    borderColor: 'black',
-                    borderWidth: 1
+        fetch('http://localhost:4000/predict', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ text: review }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                const respuesta = data.probabilities;
+                const backgroundColorNew = ['aqua', 'aqua', 'aqua', 'aqua', 'aqua'];
+                if (option === "Yes") {
+                    backgroundColorNew[value - 1] = 'green';
                 }
-            ]
-        });
-        setShowAnswer(true);
+                const predictedValue = respuesta.indexOf(Math.max(...respuesta)) + 1
+                setPrediction(predictedValue);
+                backgroundColorNew[predictedValue - 1] = 'purple';
+
+                setData({
+                    ...data,
+                    datasets: [
+                        {
+                            label: 'Probabilities',
+                            data: respuesta,
+                            backgroundColor: backgroundColorNew,
+                            borderColor: 'black',
+                            borderWidth: 1
+                        }
+                    ]
+                });
+                setShowAnswer(true);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Request failed, a fake prediction will be shown');
+
+                // Fallback behavior
+                const respuesta = [0, 0.1, 0.3, 0.7, 1];
+                const backgroundColorNew = ['aqua', 'aqua', 'aqua', 'aqua', 'aqua'];
+                if (option === "Yes") {
+                    backgroundColorNew[value - 1] = 'green';
+                }
+                const predictedValue = respuesta.indexOf(Math.max(...respuesta)) + 1
+                setPrediction(predictedValue);
+                backgroundColorNew[predictedValue - 1] = 'purple';
+
+                setData({
+                    ...data,
+                    datasets: [
+                        {
+                            label: 'Probabilities',
+                            data: respuesta,
+                            backgroundColor: backgroundColorNew,
+                            borderColor: 'black',
+                            borderWidth: 1
+                        }
+                    ]
+                });
+                setShowAnswer(true);
+            });
     }
 
     return (
 
 
-        <PredictContainer style={(showAnswer)? {height: "750px"}: {}}>
+        <PredictContainer style={(showAnswer) ? { height: "750px" } : {}}>
 
             <div className='predictFormContainer'>
 
