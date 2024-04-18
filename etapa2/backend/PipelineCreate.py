@@ -12,6 +12,8 @@ import nltk
 import joblib
 from nltk import word_tokenize
 nltk.download('stopwords')
+nltk.download('punkt')
+
 from nltk.corpus import stopwords
 import spacy
 from sklearn.pipeline import Pipeline
